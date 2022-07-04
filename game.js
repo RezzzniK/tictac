@@ -44,13 +44,12 @@ function Game(human, computer) {
 
         id++;
       }
-      ctx.strokeStyle = "yellow";
+      ctx.strokeStyle = "orangered";
       ctx.strokeRect(boardRectCoord[0]["x"], boardRectCoord[0]["y"], 150, 150);
       boardRectCoord[0]["isActive"] = true;
       currentIDChoice = 0;
     }
   }
-
   window.addEventListener("keyup", PlayerChoice);
 
   function PlayerChoice(e) {
@@ -59,188 +58,50 @@ function Game(human, computer) {
       return;
     } else if (e.which == "37" /**arrow left */) {
       if (currentIDChoice == 0) {
-        ctx.strokeStyle = "#000";
-
-        ctx.strokeRect(
-          boardRectCoord[0]["x"],
-          boardRectCoord[0]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[0]["isActive"] = false;
+        drawBlackStroke(currentIDChoice);
         currentIDChoice = boardRectCoord.length - 1;
-
-        ctx.strokeStyle = "yellow";
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          150,
-          150
-        );
-
-        boardRectCoord[currentIDChoice]["isActive"] = true;
+        drawOrangeStroke(currentIDChoice);
       } else {
-        ctx.strokeStyle = "#000";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = false;
+        drawBlackStroke(currentIDChoice);
         currentIDChoice--;
-        ctx.strokeStyle = "yellow";
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = true;
+        drawOrangeStroke(currentIDChoice);
       }
     } else if (e.which == "39" /**arrow right */) {
       if (currentIDChoice == boardRectCoord.length - 1) {
-        ctx.strokeStyle = "#000";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = false;
+        drawBlackStroke(currentIDChoice);
         currentIDChoice = 0;
-        ctx.strokeStyle = "yellow";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = true;
+        drawOrangeStroke(currentIDChoice);
       } else {
-        ctx.strokeStyle = "#000";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = false;
+        drawBlackStroke(currentIDChoice);
         currentIDChoice++;
-        ctx.strokeStyle = "yellow";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = true;
+        drawOrangeStroke(currentIDChoice);
       }
     } else if (e.which == "38" /**arrow up */) {
       if (currentIDChoice - 3 < 0) {
-        ctx.strokeStyle = "#000";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = false;
+        drawBlackStroke(currentIDChoice);
         //color new place
-
         currentIDChoice = boardRectCoord.length + (currentIDChoice - 3);
-
-        ctx.strokeStyle = "yellow";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = true;
+        drawOrangeStroke(currentIDChoice);
       } else {
         //erase old place
-        ctx.strokeStyle = "#000";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = false;
+        drawBlackStroke(currentIDChoice);
         //color new place
-
         currentIDChoice -= 3;
-
-        ctx.strokeStyle = "yellow";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = true;
+        drawOrangeStroke(currentIDChoice);
       }
     } else if (e.which == "40" /**arrow down */) {
       if (currentIDChoice + 3 > boardRectCoord.length - 1) {
         //erase old place
-
-        ctx.strokeStyle = "#000";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = false;
+        drawBlackStroke(currentIDChoice);
         //color new place
-
         currentIDChoice = currentIDChoice + 3 - boardRectCoord.length;
-
-        ctx.strokeStyle = "yellow";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = true;
+        drawOrangeStroke(currentIDChoice);
       } else {
         //erase old place
-
-        ctx.strokeStyle = "#000";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = false;
+        drawBlackStroke(currentIDChoice);
         //color new place
-
         currentIDChoice = currentIDChoice + 3;
-
-        ctx.strokeStyle = "yellow";
-
-        ctx.strokeRect(
-          boardRectCoord[currentIDChoice]["x"],
-          boardRectCoord[currentIDChoice]["y"],
-          SPACE_SIZE,
-          SPACE_SIZE
-        );
-        boardRectCoord[currentIDChoice]["isActive"] = true;
+        drawOrangeStroke(currentIDChoice);
       }
     } else if (e.which == "13" /**IF PLAYER HIT ENTER */) {
       console.log(`Enter hitted ${currentIDChoice}`);
@@ -251,8 +112,6 @@ function Game(human, computer) {
           boardRectCoord[currentIDChoice].y,
           boardRectCoord[currentIDChoice].x
         );
-
-        //window.removeEventListener("keyup", PlayerChoice);
         if (isWinner(currentPlayer)) {
           showGameOver(currentPlayer);
           GAME_OVER = true;
@@ -278,10 +137,9 @@ function Game(human, computer) {
         );
       }
     }
-    // window.addEventListener("keyup", PlayerChoice);
     console.log(boardRectCoord);
   }
-  /**DROWING X OR O */
+  /**DRAWING X OR O */
   function drowOnBoard(player, i, j) {
     const img = player == "X" ? xImage : oImage;
     ctx.drawImage(img, j, i, SPACE_SIZE, SPACE_SIZE);
@@ -342,10 +200,25 @@ function Game(human, computer) {
     if (e.which == "13") {
       gameOverElem.classList.add("hide");
       window.location.reload();
-
-      //Game(human, computer);
     } else if (e.which == "8") {
       window.open("https://google.com");
     }
+  }
+  function drawBlackStroke(id) {
+    ctx.strokeStyle = "#000";
+
+    ctx.strokeRect(
+      boardRectCoord[id]["x"],
+      boardRectCoord[id]["y"],
+      SPACE_SIZE,
+      SPACE_SIZE
+    );
+    boardRectCoord[id]["isActive"] = false;
+  }
+  function drawOrangeStroke(id) {
+    ctx.strokeStyle = "orangered";
+    ctx.strokeRect(boardRectCoord[id]["x"], boardRectCoord[id]["y"], 150, 150);
+
+    boardRectCoord[id]["isActive"] = true;
   }
 }
