@@ -1,8 +1,3 @@
-// Copyright 2013 Google Inc. All Rights Reserved.
-// You may study, modify, and use this example for any purpose.
-// Note that this example is provided "as is", WITHOUT WARRANTY
-// of any kind either expressed or implied.
-
 let adsManager;
 let adsLoader;
 let adDisplayContainer;
@@ -25,10 +20,6 @@ function init() {
   canvas.style.display = "none";
   videoContent.style.display = "none";
   window.addEventListener("keyup", selectSymbol);
-
-  // window.addEventListener("keyup", checkKey /**playAds*/);
-  //   playButton = document.getElementById("playButton");
-  //   playButton.addEventListener("click", playAds);
   setUpIMA();
 }
 
