@@ -6,6 +6,8 @@ function Game(human, computer) {
   const SPACE_SIZE = 150;
   let board = [];
   let id = 0;
+  console.log(canvas.clientHeight);
+  console.log(canvas.clientWidth);
   for (let i = 0; i < ROW; i++) {
     board[i] = [];
     for (let j = 0; j < COLUMN; j++) {
