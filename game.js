@@ -19,7 +19,8 @@ function Game(human, computer) {
   const gameOverElem = document.getElementById("gameover");
 
   let currentIDChoice = 0;
-  let currentPlayer = human;
+  let currentPlayer = [human, computer][Math.floor(Math.random() * 2)]; // let currentPlayer = human;
+  console.log(`current player is ${currentPlayer} `);
   console.log(`human is ${human}`);
   console.log(`computer is ${computer}`);
   console.log(`current player is ${currentPlayer}`);
@@ -242,7 +243,7 @@ function Game(human, computer) {
         boardRectCoord[currentIDChoice]["isActive"] = true;
       }
     } else if (e.which == "13" /**IF PLAYER HIT ENTER */) {
-      console.log(currentIDChoice);
+      console.log(`Enter hitted ${currentIDChoice}`);
       if (boardRectCoord[currentIDChoice].value === "") {
         boardRectCoord[currentIDChoice].value = currentPlayer;
         drowOnBoard(
@@ -272,8 +273,8 @@ function Game(human, computer) {
       } else {
         drowOnBoard(
           boardRectCoord[currentIDChoice].value,
-          boardRectCoord[currentIDChoice].x,
-          boardRectCoord[currentIDChoice].y
+          boardRectCoord[currentIDChoice].y,
+          boardRectCoord[currentIDChoice].x
         );
       }
     }
@@ -322,13 +323,29 @@ function Game(human, computer) {
   function showGameOver(player) {
     let imgSrc = `./${player.toLowerCase()}Image.png`;
     let message = player == "tie" ? "No Winner" : "The Winner is";
+    gameOverElem.style.textAlign = "center";
+    gameOverElem.style.width = "450px";
+    gameOverElem.style.height = "350px";
+    gameOverElem.style.backgroundColor = "gray";
+    gameOverElem.style.borderRadius = "25%";
     gameOverElem.innerHTML = `
-  <h1>${message}</h1>
-  <img class="winner-img" src=${imgSrc}>
+  <h1 class="enter">${message}</h1>
+  <img class="winner-img"  style="width:100px;height:100px;"src=${imgSrc}>
   <h2>PLAY AGAIN?</h2>
-  <h3>Hit ENTER to RESTART</h3>
-  <h3>Hit BACKSPACE to CANCEL</h3>`;
+  <h3>Hit <a class="enter">ENTER</a> to <a class="enter"> RESTART</a></h3>
+  <h3>Hit <a class="cancel">BACKSPACE</a> to <a class="cancel">CANCEL</a></h3>`;
     gameOverElem.classList.remove("hide");
     canvas.style.display = "none";
+    window.addEventListener("keyup", restartGame);
+  }
+  function restartGame(e) {
+    if (e.which == "13") {
+      gameOverElem.classList.add("hide");
+      window.location.reload();
+
+      //Game(human, computer);
+    } else if (e.which == "8") {
+      window.open("https://google.com");
+    }
   }
 }

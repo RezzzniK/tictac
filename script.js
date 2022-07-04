@@ -21,10 +21,12 @@ const player = new Object();
  */
 function init() {
   videoContent = document.getElementById("contentElement");
+  options.style.display = "block";
   canvas.style.display = "none";
   videoContent.style.display = "none";
+  window.addEventListener("keyup", selectSymbol);
 
-  window.addEventListener("keyup", checkKey /**playAds*/);
+  // window.addEventListener("keyup", checkKey /**playAds*/);
   //   playButton = document.getElementById("playButton");
   //   playButton.addEventListener("click", playAds);
   setUpIMA();
@@ -91,31 +93,38 @@ function createAdDisplayContainer() {
 function checkKey(e) {
   console.log(e.which);
   if (e.which == "13") {
+    window.removeEventListener("keyup", selectSymbol);
     window.removeEventListener("keyup", checkKey);
-    window.addEventListener("keyup", selectSymbol);
+    options.style.display = "none";
+    console.log("starting the game");
+    videoContent.style.display = "block";
+    playAds(); /**DON'T FORGET TO SWITCH IT BACK IF YOU WONDERING WHY ITS NNOT WORKING */
+    //StartGame(); //DON'T FORGET TO COMMENT THIS TO RESUME NORMAL BEHAVIOR
   } else if (e.which == "8") {
     window.open("https://google.com");
   }
 }
 /**SELECTING SYMBOL 'X' OR 'O' */
 function selectSymbol(e) {
+  let warning = document.getElementById("warning");
   console.log("please select symbol");
   if (e.which == "37") {
     console.log("X selected");
     switchActive(oBtn, xBtn);
     player.human = "X";
     player.computer = "O";
-    //playAds();/**DON'T FORGET TO SWITCH IT BACK IF YOU WONDERING WHY ITS NNOT WORKING */
+    warning.style.display = "none";
   } else if (e.which == "39") {
     switchActive(xBtn, oBtn);
     player.human = "O";
     player.computer = "X";
-    playAds();
     console.log("O selected");
+    warning.style.display = "none";
+  } else if (e.which == "13" && !player.human && !player.computer) {
+    warning.style.display = "block";
+    window.removeEventListener("keyup", checkKey);
   }
-  StartGame(); //DON'T FORGET TO COMMENT THIS TO RESUME NORMAL BEHAVIOR
-  options.style.display = "none";
-  console.log("starting the game");
+  window.addEventListener("keyup", checkKey);
 }
 /**
  *
@@ -145,8 +154,9 @@ function StartGame() {
  * Loads the video content and initializes IMA ad playback.
  */
 function playAds() {
-  window.removeEventListener("keydown", selectSymbol);
+  //window.removeEventListener("keydown", selectSymbol);
   options.style.display = "none";
+
   // Initialize the container. Must be done through a user action on mobile
   // devices.
   videoContent.load();

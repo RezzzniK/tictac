@@ -2,6 +2,8 @@
   <head>
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="//db.onlinewebfonts.com/c/5ad76325846a9cdeaf35607f9b7bc65c?family=Invaders" rel="stylesheet" type="text/css"/>
+                
   </head>
 
   <body>
@@ -9,12 +11,13 @@
     <!-- Game field -->
     <canvas id="cvs" width="450" height="450"></canvas>
     <div id="options">
-      <h1>Welcome to Tic Tac Toe</h1>
+      <h1>Welcome to <a class="enter">Tic</a> <a class="cancel">Tac</a> <a class="enter">Toe</a></h1>
       <h2>Symbol</h2>
-      <button id="x">X</button>
-      <button id="o">O</button>
-      <h2>Hit ENTER to PLAY</h2>
-      <h3>Hit BACKSPACE to CANCEL</h3>
+      <p class="hide" id="warning">PLEASE SELECT SYMBOL BEFORE YOU HIT ENTER</p>
+      <button class="button" id="x">X</button>
+      <button class="button" id="o">O</button>
+      <h2>Hit <a class="enter">ENTER</a> to <a class="enter">PLAY</a></h2>
+      <h3>Hit <a class="cancel">BACKSPACE</a> to <a class="cancel">CANCEL</a></h3>
     </div>
     <div class="gamover hide" id="gameover"></div>
   </div>
