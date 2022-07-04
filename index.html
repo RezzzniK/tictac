@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <div id="mainContainer">
+      <div id="content">
+        <video id="contentElement"></video>
+        <!-- Game field -->
+        <canvas id="cvs"></canvas>
+        <div id="options">
+          <h1>Welcome to Tic Tac Toe</h1>
+          <h2>Symbol</h2>
+          <div id="x">X</div>
+          <div id="o">O</div>
+          <h2>Hit ENTER to PLAY</h2>
+          <h3>Hit BACKSPACE to CANCEL</h3>
+        </div>
+        <div class="gamover hide"></div>
+      </div>
+      <!-- End of Game Field -->
+      <div id="adContainer"></div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="//imasdk.googleapis.com/js/sdkloader/ima3.js"
+    ></script>
+    <script type="text/javascript" src="game.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
