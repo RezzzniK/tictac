@@ -24,7 +24,7 @@ function init() {
   canvas.style.display = "none";
   videoContent.style.display = "none";
 
-  window.addEventListener("keydown", checkKey /**playAds*/);
+  window.addEventListener("keyup", checkKey /**playAds*/);
   //   playButton = document.getElementById("playButton");
   //   playButton.addEventListener("click", playAds);
   setUpIMA();
@@ -91,8 +91,8 @@ function createAdDisplayContainer() {
 function checkKey(e) {
   console.log(e.which);
   if (e.which == "13") {
-    window.removeEventListener("keydown", checkKey);
-    window.addEventListener("keydown", selectSymbol);
+    window.removeEventListener("keyup", checkKey);
+    window.addEventListener("keyup", selectSymbol);
   } else if (e.which == "8") {
     window.open("https://google.com");
   }
@@ -124,6 +124,7 @@ function switchActive(off, on) {
 }
 /**STARTING THE GAME */
 function StartGame() {
+  window.removeEventListener("keyup", selectSymbol);
   videoContent.style.display = "none";
   canvas.style.display = "block";
 
