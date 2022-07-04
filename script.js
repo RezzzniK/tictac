@@ -105,7 +105,7 @@ function selectSymbol(e) {
     switchActive(oBtn, xBtn);
     player.human = "X";
     player.computer = "O";
-    playAds();
+    //playAds();/**DON'T FORGET TO SWITCH IT BACK IF YOU WONDERING WHY ITS NNOT WORKING */
   } else if (e.which == "39") {
     switchActive(xBtn, oBtn);
     player.human = "O";
@@ -113,6 +113,7 @@ function selectSymbol(e) {
     playAds();
     console.log("O selected");
   }
+  StartGame(); //DON'T FORGET TO COMMENT THIS TO RESUME NORMAL BEHAVIOR
   console.log("starting the game");
 }
 function switchActive(off, on) {
@@ -272,7 +273,3 @@ init();
  *
  * GAME SECTOR
  */
-function Game(human, computer) {
-  const column = 3;
-  const row = 3;
-}
