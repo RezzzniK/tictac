@@ -10,7 +10,6 @@ const options = document.getElementById("options");
 const xBtn = document.getElementById("x");
 const oBtn = document.getElementById("o");
 const player = new Object();
-
 /**
  * Initializes IMA setup.
  */
@@ -42,14 +41,12 @@ function setUpIMA() {
     onAdError,
     false
   );
-
   // An event listener to tell the SDK that our content video
   // is completed so the SDK can play any post-roll ads.
   const contentEndedListener = function () {
     adsLoader.contentComplete();
   };
   videoContent.onended = contentEndedListener;
-
   // Request video ads.
   const adsRequest = new google.ima.AdsRequest();
   adsRequest.adTagUrl =
@@ -57,7 +54,6 @@ function setUpIMA() {
     "iu=/21775744923/external/single_ad_samples&sz=640x480&" +
     "cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&" +
     "output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=";
-
   // Specify the linear and nonlinear slot sizes. This helps the SDK to
   // select the correct creative if multiple are returned.
   adsRequest.linearAdSlotWidth = 640;
@@ -68,7 +64,6 @@ function setUpIMA() {
 
   adsLoader.requestAds(adsRequest);
 }
-
 /**
  * Sets the 'adContainer' div as the IMA ad display container.
  */
@@ -117,11 +112,7 @@ function selectSymbol(e) {
   }
   window.addEventListener("keyup", checkKey);
 }
-/**
- *
- * CHOOSING X OR Y
- *
- *  */ //
+/**CHOOSING X OR Y*/
 function switchActive(off, on) {
   off.style.backgroundColor = "white";
   off.style.color = "black";
@@ -137,22 +128,14 @@ function StartGame() {
   console.log("starting the game");
   Game(player.human, player.computer);
 }
-/**
- *
- *
- *
- *
- * Loads the video content and initializes IMA ad playback.
- */
+/** Loads the video content and initializes IMA ad playback.*/
 function playAds() {
   //window.removeEventListener("keydown", selectSymbol);
   options.style.display = "none";
-
   // Initialize the container. Must be done through a user action on mobile
   // devices.
   videoContent.load();
   adDisplayContainer.initialize();
-
   try {
     // Initialize the ads manager. Ad rules playlist will start at this time.
     adsManager.init(640, 360, google.ima.ViewMode.NORMAL);
@@ -164,9 +147,7 @@ function playAds() {
     videoContent.play();
   }
 }
-
-/**
- * Handles the ad manager loading and sets ad event listeners.
+/**Handles the ad manager loading and sets ad event listeners.
  * @param {!google.ima.AdsManagerLoadedEvent} adsManagerLoadedEvent
  */
 function onAdsManagerLoaded(adsManagerLoadedEvent) {
@@ -178,7 +159,6 @@ function onAdsManagerLoaded(adsManagerLoadedEvent) {
     videoContent,
     adsRenderingSettings
   );
-
   // Add listeners to the required events.
   adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
   adsManager.addEventListener(
@@ -193,7 +173,6 @@ function onAdsManagerLoaded(adsManagerLoadedEvent) {
     google.ima.AdEvent.Type.ALL_ADS_COMPLETED,
     onAdEvent
   );
-
   // Listen to any additional events, if necessary.
   adsManager.addEventListener(google.ima.AdEvent.Type.LOADED, onAdEvent);
   adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdEvent);
@@ -251,20 +230,14 @@ function onAdError(adErrorEvent) {
   console.log(adErrorEvent.getError());
   adsManager.destroy();
 }
-
-/**
- * Pauses video content and sets up ad UI.
- */
+/**Pauses video content and sets up ad UI.*/
 function onContentPauseRequested() {
   videoContent.pause();
   // This function is where you should setup UI for showing ads (for example,
   // display ad timer countdown, disable seeking and more.)
   // setupUIForAds();
 }
-
-/**
- * Resumes video content and removes ad UI.
- */
+/**Resumes video content and removes ad UI.*/
 function onContentResumeRequested() {
   videoContent.play();
   // This function is where you should ensure that your UI is ready
@@ -272,12 +245,5 @@ function onContentResumeRequested() {
   // implement this function when necessary.
   // setupUIForContent();
 }
-
 // Wire UI element references and UI event listeners.
 init();
-
-/**
- *
- *
- * GAME SECTOR
- */
