@@ -114,8 +114,14 @@ function selectSymbol(e) {
     console.log("O selected");
   }
   StartGame(); //DON'T FORGET TO COMMENT THIS TO RESUME NORMAL BEHAVIOR
+  options.style.display = "none";
   console.log("starting the game");
 }
+/**
+ *
+ * CHOOSING X OR Y
+ *
+ *  */ //
 function switchActive(off, on) {
   off.style.backgroundColor = "white";
   off.style.color = "black";
