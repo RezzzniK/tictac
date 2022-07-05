@@ -2,10 +2,7 @@ body {
   display: flex;
   justify-content: right;
 }
-/* #mthfckr {
-  display: flex;
-  justify-content: flex-end;
-} */
+
 #mainContainer {
   position: relative;
 
