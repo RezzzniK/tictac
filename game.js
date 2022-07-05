@@ -20,10 +20,10 @@ function Game(human, computer) {
 
   let currentIDChoice = 0;
   let currentPlayer = [human, computer][Math.floor(Math.random() * 2)]; // let currentPlayer = human;
-  console.log(`current player is ${currentPlayer} `);
-  console.log(`human is ${human}`);
-  console.log(`computer is ${computer}`);
-  console.log(`current player is ${currentPlayer}`);
+  // console.log(`current player is ${currentPlayer} `);
+  // console.log(`human is ${human}`);
+  // console.log(`computer is ${computer}`);
+  // console.log(`current player is ${currentPlayer}`);
   drawBoard();
 
   function drawBoard() {
@@ -53,7 +53,7 @@ function Game(human, computer) {
   window.addEventListener("keyup", PlayerChoice);
 
   function PlayerChoice(e) {
-    console.log("inside player choise");
+    // console.log("inside player choise");
     if (GAME_OVER) {
       return;
     } else if (e.which == "37" /**arrow left */) {
@@ -104,7 +104,7 @@ function Game(human, computer) {
         drawOrangeStroke(currentIDChoice);
       }
     } else if (e.which == "13" /**IF PLAYER HIT ENTER */) {
-      console.log(`Enter hitted ${currentIDChoice}`);
+      // console.log(`Enter hitted ${currentIDChoice}`);
       if (boardRectCoord[currentIDChoice].value === "") {
         boardRectCoord[currentIDChoice].value = currentPlayer;
         drowOnBoard(
@@ -123,9 +123,9 @@ function Game(human, computer) {
           return;
         }
         if (currentPlayer == human) {
-          console.log(`switching player to ${computer}`);
+          // console.log(`switching player to ${computer}`);
           currentPlayer = computer;
-          console.log(`current player now is ${currentPlayer}`);
+          // console.log(`current player now is ${currentPlayer}`);
         } else {
           currentPlayer = human;
         }
@@ -137,17 +137,17 @@ function Game(human, computer) {
         );
       }
     }
-    console.log(boardRectCoord);
+    // console.log(boardRectCoord);
   }
   /**DRAWING X OR O */
   function drowOnBoard(player, i, j) {
     const img = player == "X" ? xImage : oImage;
     ctx.drawImage(img, j, i, SPACE_SIZE, SPACE_SIZE);
-    console.log("in draw on board function");
+    // console.log("in draw on board function");
   }
   /**CHECKIN THE WIN COMBINATION */
   function isWinner(player) {
-    console.log("is winner fucntion");
+    // console.log("is winner fucntion");
     const COMBOS = [
       [0, 3, 6],
       [1, 4, 7],
@@ -170,8 +170,8 @@ function Game(human, computer) {
   }
   function isTie() {
     ///let isBoardFill = true;
-    console.log("in isTie() func");
-    console.log(boardRectCoord.every((dict) => dict.value != ""));
+    // console.log("in isTie() func");
+    // console.log(boardRectCoord.every((dict) => dict.value != ""));
     if (boardRectCoord.every((dict) => dict.value != "")) {
       //if all board if filled out
       return true;
@@ -206,7 +206,6 @@ function Game(human, computer) {
   }
   function drawBlackStroke(id) {
     ctx.strokeStyle = "#000";
-
     ctx.strokeRect(
       boardRectCoord[id]["x"],
       boardRectCoord[id]["y"],
@@ -218,7 +217,6 @@ function Game(human, computer) {
   function drawOrangeStroke(id) {
     ctx.strokeStyle = "orangered";
     ctx.strokeRect(boardRectCoord[id]["x"], boardRectCoord[id]["y"], 150, 150);
-
     boardRectCoord[id]["isActive"] = true;
   }
 }

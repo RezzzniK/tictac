@@ -7,12 +7,12 @@
   </head>
 
   <body>
-    
+    <div id="mthfckr">
     <!-- Game field -->
     <canvas id="cvs" width="450" height="450"></canvas>
     <div id="options">
       <h1>Welcome to <a class="enter">Tic</a> <a class="cancel">Tac</a> <a class="enter">Toe</a></h1>
-      <h2>Symbol</h2>
+      <h2> Choose your Symbol:</h2>
       <p class="hide" id="warning">PLEASE SELECT SYMBOL BEFORE YOU HIT ENTER</p>
       <button class="button" id="x">X</button>
       <button class="button" id="o">O</button>
@@ -28,12 +28,13 @@
         
       <div id="adContainer"></div>
     </div>
-
+  </div>
     <script
       type="text/javascript"
       src="//imasdk.googleapis.com/js/sdkloader/ima3.js"
     ></script>
     <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="minMax.js"></script>
   </body>
 </html>

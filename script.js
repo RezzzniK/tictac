@@ -3,6 +3,7 @@ let adsLoader;
 let adDisplayContainer;
 let intervalTimer;
 let videoContent;
+let mainContainer;
 /** GAME VARIABLES */
 let canvas = document.getElementById("cvs");
 // let symbol = "";
@@ -15,9 +16,11 @@ const player = new Object();
  */
 function init() {
   videoContent = document.getElementById("contentElement");
+  mainContainer = document.getElementById("mainContainer");
   options.style.display = "block";
   canvas.style.display = "none";
   videoContent.style.display = "none";
+  mainContainer.style.display = "none";
   window.addEventListener("keyup", selectSymbol);
   setUpIMA();
 }
@@ -77,13 +80,16 @@ function createAdDisplayContainer() {
 }
 /** OPTIONS TO PLAY OR ESCAPE AWAY*/
 function checkKey(e) {
-  console.log(e.which);
+  // console.log(e.which);
   if (e.which == "13") {
     window.removeEventListener("keyup", selectSymbol);
     window.removeEventListener("keyup", checkKey);
     options.style.display = "none";
-    console.log("starting the game");
-    videoContent.style.display = "block";
+    // console.log("starting the game");
+    // videoContent.style.display = "block";
+    videoContent.style.display = "flex";
+    mainContainer.style.display = "flex";
+
     playAds(); /**DON'T FORGET TO SWITCH IT BACK IF YOU WONDERING WHY ITS NNOT WORKING */
     //StartGame(); //DON'T FORGET TO COMMENT THIS TO RESUME NORMAL BEHAVIOR
   } else if (e.which == "8") {
@@ -93,9 +99,9 @@ function checkKey(e) {
 /**SELECTING SYMBOL 'X' OR 'O' */
 function selectSymbol(e) {
   let warning = document.getElementById("warning");
-  console.log("please select symbol");
+  // console.log("please select symbol");
   if (e.which == "37") {
-    console.log("X selected");
+    // console.log("X selected");
     switchActive(oBtn, xBtn);
     player.human = "X";
     player.computer = "O";
@@ -104,7 +110,7 @@ function selectSymbol(e) {
     switchActive(xBtn, oBtn);
     player.human = "O";
     player.computer = "X";
-    console.log("O selected");
+    // console.log("O selected");
     warning.style.display = "none";
   } else if (e.which == "13" && !player.human && !player.computer) {
     warning.style.display = "block";
@@ -123,9 +129,10 @@ function switchActive(off, on) {
 function StartGame() {
   window.removeEventListener("keyup", selectSymbol);
   videoContent.style.display = "none";
+  mainContainer.style.display = "none";
   canvas.style.display = "block";
 
-  console.log("starting the game");
+  // console.log("starting the game");
   Game(player.human, player.computer);
 }
 /** Loads the video content and initializes IMA ad playback.*/

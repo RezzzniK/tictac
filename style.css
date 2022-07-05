@@ -1,5 +1,14 @@
+body {
+  display: flex;
+  justify-content: right;
+}
+/* #mthfckr {
+  display: flex;
+  justify-content: flex-end;
+} */
 #mainContainer {
   position: relative;
+
   width: 640px;
   height: 360px;
 }
@@ -7,14 +16,14 @@
 #content,
 #adContainer {
   position: absolute;
+  justify-content: right;
   top: 0px;
-  left: 0px;
+  /* left: 0px; */
   width: 640px;
   height: 360px;
 }
 
 #contentElement {
-  display: block;
   width: 640px;
   height: 360px;
   overflow: hidden;
